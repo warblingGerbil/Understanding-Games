@@ -14,6 +14,17 @@
       padding: 1rem;
       line-height: 1.6;
     }
+    #button-area {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin-top: 60px;
+    }
+    .spawn-btn {
+      position: absolute;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -33,7 +44,49 @@
     </p>
 
     <p><a href="index.html">Back to Main Page</a></p>
+
+    <div id="button-area">
+      <button class="spawn-btn" id="start-btn" style="left: 120px; top: 120px;">
+        Push this button.
+      </button>
+    </div>
   </div>
+
+  <script>
+    const area = document.getElementById("button-area");
+    let x = 120;
+    let y = 120;
+    let step = 80;
+    let direction = 0;
+
+    function spawnNext() {
+      const btn = document.createElement("button");
+      btn.className = "spawn-btn";
+      btn.textContent = "And this one";
+
+      if (direction === 0) x += step;
+      else if (direction === 1) y += step;
+      else if (direction === 2) x -= step;
+      else if (direction === 3) y -= step;
+
+      direction = (direction + 1) % 4;
+
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+
+      btn.onclick = () => {
+        btn.remove();
+        spawnNext();
+      };
+
+      area.appendChild(btn);
+    }
+
+    document.getElementById("start-btn").onclick = function () {
+      this.remove();
+      spawnNext();
+    };
+  </script>
 </body>
 </html>
 
