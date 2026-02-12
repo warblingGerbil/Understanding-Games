@@ -59,7 +59,16 @@
     let step = 80;
     let direction = 0;
 
+    let g = 250; // starting green value
+
+    function darkenBackground() {
+      if (g > 0) g -= 1;
+      document.body.style.background = `rgb(0,${g},0)`;
+    }
+
     function spawnNext() {
+      darkenBackground();
+
       const btn = document.createElement("button");
       btn.className = "spawn-btn";
       btn.textContent = "And this one";
@@ -84,9 +93,11 @@
 
     document.getElementById("start-btn").onclick = function () {
       this.remove();
+      darkenBackground();
       spawnNext();
     };
   </script>
 </body>
 </html>
+
 
