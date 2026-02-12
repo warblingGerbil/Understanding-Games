@@ -34,19 +34,21 @@
       color: rgb(0,250,0);
       transition: 0.3s;
     }
-    .secret-triangle span {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, 80%);
-      width: 110px;
-      text-align: center;
-      font-size: 9px;
-      color: rgb(0,250,0);
-      transition: 0.3s;
-      pointer-events: none;
-    }
 
+    .secret-triangle span {
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+    width: 110px;
+    text-align: center;
+    font-size: 9px;
+    color: rgb(0,250,0);
+    transition: 0.3s;
+    pointer-events: none;
+  }
+
+    
     .secret-hitbox:hover .secret-triangle {
       color: yellow;
       border-bottom-color: yellow;
